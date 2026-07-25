@@ -1,1 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BelleBreeze Summer Camp 2026</title>
+    <style>
+        /* ベーススタイル */
+        :root {
+            --primary-color: #fff; /* 文字の基本色 */
+            --accent-color: #ffe082; /* キラキラの金色 */
+            --font-main: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            /* 手書き風フォント（Google Fontsなどを使うとより雰囲気が出ます。ここでは代替フォント指定） */
+            --font-fancy: 'Georgia', serif; 
+        }
 
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* スクロールバーを隠す */
+            font-family: var(--font-main);
+            background-color: #000; /* 画像読み込み前の黒背景 */
+        }
+
+        /* ヒーローセクション（表紙）のコンテナ */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* 画面いっぱいの高さ */
+            display: flex;
+            justify-content: center; /* 横方向中央 */
+            align-items: center;    /* 縦方向中央 */
+            overflow: hidden;
+        }
+
+        /* 背景画像のアニメーション設定 */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* ★ここに画像のパスを指定してください★ */
+            background-image: url('image_6.png'); 
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            /* 背景をゆっくりズームさせるアニメーション */
+            animation: bgZoom 20s infinite alternate;
+        }
+
+        /* 背景に少し暗いマスクをかけて文字を見やすくする（オプション） */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.1); /* 10%だけ暗く */
+            z-index: 2;
+        }
+
+        /* コンテンツエリア（文字部分） */
+        .hero-content {
+            position: relative;
+            z-index: 10; /* 画像より前に */
+            text-align: center;
+            color: var(--primary-color);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 文字の可読性確保 */
+        }
+
+        /* BelleBreeze ロゴ部分（元画像の文字をイメージ） */
+        .logo-text {
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards; /* 0.5秒後に開始 */
+        }
+
+        /* メインタイトル Summer Camp 2026 */
+        .main-title {
+            position: relative;
+            font-family: var(--font-fancy); /* 手書き/セリフ系フォント */
+            font-size: 5rem; /* スマホ用は後で調整 */
+            font-weight: bold;
+            line-height: 1.1;
+            margin: 0;
+            opacity: 0;
+            /* キラキラと同時に現れるアニメーション */
+            animation: titleAppear 1.5s ease-out 1s forwards; /* 1秒後に開始 */
+        }
+
+        .main-title span {
+            display: block; /* 改行させる */
+        }
+
+        .title-summer {
+            transform: translateX(-20px); /* 少し左から */
+        }
+        .title-camp {
+            font-size: 6rem; /* Campを強調 */
+            transform: translateX(20px);  /* 少し右から */
+            color: #fff;
+        }
+
+        /* キラキラエフェクト（SVG）のコンテナ */
+        .sparkle-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%; /* タイトルより少し大きく */
+            height: 140%;
+            pointer-events: none; /* クリックを邪魔しない */
+            z-index: -1; /* 文字の後ろに配置 */
+        }
+
+        /* SVGのキラキラアニメーション */
+        .sparkle-path {
+            stroke: var(--accent-color);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 1000; /* 線を描くアニメーション用 */
+            stroke-dashoffset: 1000;
+            opacity: 0;
+            animation: sparkleDraw 2s ease-in-out 1s forwards, sparkleFade 3s infinite 3s; /* 描画後、点滅 */
+        }
+
+        /* ―― アニメーション定義（Keyframes） ―― */
+
+        /* 背景ズーム */
+        @keyframes bgZoom {
+            0% { transform: scale(1.0); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* 下からふわっと現れる */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* タイトル専用のアニメーション（左右から合流） */
+        @keyframes titleAppear {
+            0% {
+                opacity: 0;
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateX(0); /* 定位置へ */
+            }
+        }
+
+        /* SVGの線を描くアニメーション */
+        @keyframes sparkleDraw {
+            0% {
+                opacity: 0;
+                stroke-dashoffset: 1000;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        /* キラキラの点滅 */
+        @keyframes sparkleFade {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+
+        /* レスポンシブ対応（スマホ表示） */
+        @media (max-width: 768px) {
+            .logo-text { font-size: 1rem; }
+            .main-title { font-size: 2.8rem; }
+            .title-camp { font-size: 3.5rem; }
+            .sparkle-container { width: 150%; height: 150%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <!-- 背景画像エリア -->
+        <div class="hero-bg"></div>
+
+        <!-- コンテンツエリア -->
+        <div class="hero-content">
+            <div class="logo-text">BelleBreeze</div>
+            
+            <h1 class="main-title">
+                <!-- キラキラSVGエフェクト（タイトルに重ねる） -->
+                <div class="sparkle-container">
+                    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 元画像のキラキラの軌跡をイメージした簡易的な曲線 -->
+                        <path class="sparkle-path" d="M10,100 C150,20 350,180 490,100" />
+                        <!-- ハートや星の簡易代用（ドット） -->
+                        <circle class="sparkle-path" cx="50" cy="50" r="3" />
+                        <circle class="sparkle-path" cx="450" cy="150" r="3" />
+                        <circle class="sparkle-path" cx="400" cy="30" r="2" />
+                    </svg>
+                </div>
+                <span class="title-summer">Summer</span>
+                <span class="title-camp">Camp 2026</span>
+            </h1>
+        </div>
+    </div>
+
+</body>
+</html>
