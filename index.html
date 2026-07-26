@@ -1,147 +1,152 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BelleBreeze Summer Camp 2026</title>
-    <!-- 手書き風フォントの読み込み -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        /* 基本リセット */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Summer Camp 2026</title>
 
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000; /* 画像が届くまでの背景 */
-            font-family: 'Noto Serif JP', serif;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 
-        /* 画面全体のコンテナ */
-        .hero-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+<style>
 
-        /* ★背景画像（HTML要素として画面いっぱいに広げるので絶対に映ります） */
-        .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* 背景の上に載せる文字レイヤー */
-        .content-overlay {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #ffffff;
-            text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6);
-            padding: 20px;
-        }
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Baloo 2',cursive;
+    background:#000;
+}
 
-        /* アニメーション共通設定 */
-        .animated-item {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
+/* 背景 */
 
-        /* 下からふわっと浮き上がるアニメーション */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
 
-        /* デザインパーツ */
-        .logo-area {
-            font-size: 1.8rem;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
 
-        .main-title {
-            font-family: 'Caveat', cursive;
-            font-size: 6.5rem;
-            line-height: 0.9;
-            font-weight: 700;
-        }
+/* タイトル */
 
-        .sub-title {
-            font-size: 6rem;
-            margin-top: -10px;
-        }
+.title{
+    position:absolute;
+    top:8%;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    text-align:center;
+    z-index:10;
+    color:#fff;
+}
 
-        .year {
-            font-size: 5rem;
-            margin-left: 10px;
-        }
+.title h1{
 
-        /* スマホ対応 */
-        @media (max-width: 768px) {
-            .logo-area {
-                font-size: 1.2rem;
-            }
-            .main-title {
-                font-size: 4rem;
-            }
-            .sub-title {
-                font-size: 3.5rem;
-            }
-            .year {
-                font-size: 3rem;
-            }
-        }
-    </style>
+    font-weight:800;
+    line-height:.82;
+    letter-spacing:1px;
+
+    text-shadow:
+        0 3px 0 rgba(0,0,0,.2),
+        0 8px 20px rgba(0,0,0,.35),
+        0 0 12px rgba(255,255,255,.3);
+
+    opacity:0;
+    animation:fadeUp 1s forwards;
+}
+
+.summer{
+    font-size:9rem;
+}
+
+.camp{
+    font-size:9rem;
+    margin-top:-35px;
+    animation-delay:.3s;
+}
+
+.year{
+    font-size:8rem;
+    margin-left:8px;
+}
+
+/* アニメーション */
+
+@keyframes fadeUp{
+
+from{
+    opacity:0;
+    transform:translateY(40px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* スマホ */
+
+@media(max-width:768px){
+
+.title{
+    top:12%;
+}
+
+.summer{
+    font-size:5.8rem;
+}
+
+.camp{
+    font-size:5.8rem;
+    margin-top:-18px;
+}
+
+.year{
+    font-size:5rem;
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <div class="hero-container">
-        <!-- 画面の背景写真 -->
-        <img src="sc81215.jpg" alt="背景画像" class="bg-image">
+<div class="hero">
 
-        <!-- 浮き上がる文字エリア -->
-        <div class="content-overlay">
+<img src="sc81215.jpg" alt="Summer Camp">
 
-            <!-- BelleBreeze -->
-            <div class="logo-area animated-item" style="animation-delay: 0.3s;">
-                <span class="logo-text">BelleBreeze</span>
-            </div>
+<div class="title">
 
-            <!-- Summer Camp 2026 -->
-            <div class="title-area">
-                <h1 class="main-title animated-item" style="animation-delay: 0.8s;">Summer</h1>
-                <h1 class="main-title sub-title animated-item" style="animation-delay: 1.3s;">
-                    Camp <span class="year">2026</span>
-                </h1>
-            </div>
+<h1 class="summer">
+Summer
+</h1>
 
-        </div>
-    </div>
+<h1 class="camp">
+Camp<span class="year">2026</span>
+</h1>
+
+</div>
+
+</div>
 
 </body>
 </html>
