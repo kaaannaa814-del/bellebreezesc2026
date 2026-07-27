@@ -25,6 +25,9 @@
             padding: 60px 20px;
         }
 
+        /* -----------------------------------
+           タイトル（CONTENTS）のアニメーション
+        ----------------------------------- */
         h1 {
             font-family: 'Caveat', cursive;
             font-weight: 700;
@@ -34,6 +37,9 @@
             color: #2b2b2b;
             text-align: center;
             position: relative;
+            
+            /* 下からふわっと浮き上がるアニメーション */
+            animation: fadeInUp 1s ease-out forwards;
         }
 
         h1::after {
@@ -47,6 +53,9 @@
             transform: rotate(15deg);
         }
 
+        /* -----------------------------------
+           メニューボタン全体とアニメーション
+        ----------------------------------- */
         .menu-container {
             width: 100%;
             max-width: 340px;
@@ -72,7 +81,17 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
+
+            /* ボタンも下からふわっと浮き上がるように設定 */
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
+
+        /* ボタンごとの登場タイミングを少しずつずらす */
+        .menu-btn:nth-child(1) { animation-delay: 0.3s; }
+        .menu-btn:nth-child(2) { animation-delay: 0.45s; }
+        .menu-btn:nth-child(3) { animation-delay: 0.6s; }
+        .menu-btn:nth-child(4) { animation-delay: 0.75s; }
 
         .menu-btn::before {
             content: '';
@@ -117,8 +136,22 @@
         .btn-green::after { background-color: #64dfdf; }
 
         .menu-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.97) !important;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        /* -----------------------------------
+           下からふわっと浮かび上がるアニメーション定義
+        ----------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); /* 30px下から */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);    /* 元の位置へ */
+            }
         }
     </style>
 </head>
@@ -127,7 +160,6 @@
     <h1>CONTENTS</h1>
 
     <div class="menu-container">
-     
         <a href="point.html" class="menu-btn btn-pink">point</a>
         <a href="schedule.html" class="menu-btn btn-purple">schedule</a>
         <a href="items.html" class="menu-btn btn-yellow">items</a>
