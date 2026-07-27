@@ -1,219 +1,169 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Summer Camp 2026</title>
-  <style>
-    /* ----------------------------------
-       1. 基本・リセット設定
-    ---------------------------------- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Camp 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 
-    html {
-      /* 1rem = 10px 相当にする設定 */
-      font-size: 62.5%;
-    }
+    <style>
+        /* 基本リセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-      color: #2c3e50;
-      background-color: #f4f7f6;
-      line-height: 1.6;
-    }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Noto Serif JP', serif;
+        }
 
-    /* ----------------------------------
-       2. メインビジュアル (ヒーローエリア)
-    ---------------------------------- */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 85vh;
-      min-height: 480px;
-      /* サマーキャンプイメージの背景（画像がない場合も美しいグラデーションで表示） */
-      background: linear-gradient(135deg, rgba(34, 139, 34, 0.7), rgba(0, 100, 0, 0.7)),
-                  url('images/summer-camp.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #ffffff;
-      padding: 0 2.0rem;
-    }
+        /* リンクの装飾解除 */
+        .hero-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .hero-title {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: baseline;
-      gap: 1.2rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+        /* 画面全体のコンテナ */
+        .hero-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-    /* ─── ご指定の文字サイズ ─── */
-    .summer-text {
-      font-size: 4.4rem;
-      color: #ffde59; /* 夏らしいイエローアクセント */
-    }
+        /* 背景画像 */
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+            z-index: 1;
+        }
 
-    .camp-text,
-    .year-text {
-      font-size: 4.8rem;
-    }
+        /* 背景の上に載せる文字レイヤー */
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 100%;
+            transform: translateY(-20px);
+        }
 
-    .hero-subtitle {
-      margin-top: 1.8rem;
-      font-size: 1.8rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.9;
-    }
+        /* アニメーション共通設定 */
+        .animated-item {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
 
-    /* ----------------------------------
-       3. メインコンテンツ
-    ---------------------------------- */
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 6.0rem 2.0rem;
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .section-title {
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 3.6rem;
-      position: relative;
-      color: #2e7d32;
-    }
+        /* タイトル全体エリア */
+        .title-area {
+            display: inline-block;
+        }
 
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 48px;
-      height: 4px;
-      background-color: #ffde59;
-      margin: 1.2rem auto 0;
-      border-radius: 2px;
-    }
+        /* タイトルデザイン（Times New Roman 指定） */
+        .main-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 5.2rem; /* 6.8rem ➔ 5.2rem */
+            line-height: 0.88;
+            font-weight: 700;
+            letter-spacing: 5px;
+        }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2.4rem;
-    }
+        .sub-title-container {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            margin-top: 4px;
+        }
 
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-top: 5px solid #2e7d32;
-    }
+        .sub-title {
+            font-size: 5.6rem; /* 7.2rem ➔ 5.6rem */
+            line-height: 1;
+            letter-spacing: 4px;
+        }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-    }
+        /* 2026 を Camp と同じサイズ（5.6rem）に指定 */
+        .year {
+            font-size: 5.6rem; /* 7.2rem ➔ 5.6rem */
+            margin-left: 20px;
+            letter-spacing: 2px;
+            transform: translateY(-4px) rotate(-2deg);
+            display: inline-block;
+        }
 
-    .card-body {
-      padding: 2.4rem;
-    }
-
-    .card-title {
-      font-size: 2.0rem;
-      margin-bottom: 1.0rem;
-      color: #1b5e20;
-    }
-
-    .card-text {
-      font-size: 1.4rem;
-      color: #555555;
-    }
-
-    /* ----------------------------------
-       4. フッター
-    ---------------------------------- */
-    footer {
-      background-color: #1b5e20;
-      color: #ffffff;
-      text-align: center;
-      padding: 3.0rem 2.0rem;
-      font-size: 1.3rem;
-      letter-spacing: 0.05em;
-    }
-
-    /* ----------------------------------
-       5. スマホ（画面幅が狭い時）の調整
-    ---------------------------------- */
-    @media (max-width: 600px) {
-      .hero-title {
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-
-      /* モバイル画面で綺麗に収まるよう自動微調整 */
-      .summer-text {
-        font-size: 3.8rem;
-      }
-
-      .camp-text,
-      .year-text {
-        font-size: 4.2rem;
-      }
-    }
-  </style>
+        /* スマホ対応（iPhoneなど） */
+        @media (max-width: 480px) {
+            .content-overlay {
+                transform: translateY(-25px);
+            }
+            .main-title {
+                font-size: 3.2rem; /* 5.2rem ➔ 3.2rem */
+                letter-spacing: 4px;
+            }
+            /* Camp のサイズ */
+            .sub-title {
+                font-size: 3.6rem; /* 5.6rem ➔ 3.6rem */
+                letter-spacing: 3px;
+            }
+            /* 2026 も Camp と同じサイズ（3.6rem）に変更 */
+            .year {
+                font-size: 3.6rem; /* 5.6rem ➔ 3.6rem */
+                margin-left: 10px; /* サイズダウンに合わせて位置微調整 */
+                letter-spacing: 2px;
+                transform: translateY(-2px) rotate(-2deg);
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ヘッダー / メインビジュアル -->
-  <header class="hero">
-    <div>
-      <h1 class="hero-title">
-        <span class="summer-text">Summer</span>
-        <span class="camp-text">Camp</span>
-        <span class="year-text">2026</span>
-      </h1>
-      <p class="hero-subtitle">Memories & Adventures</p>
-    </div>
-  </header>
+    <!-- タップで menu.html に移動 -->
+    <a href="menu.html" class="hero-link">
+        <div class="hero-container">
+            <img src="sc81215.jpg" alt="背景画像" class="bg-image">
 
-  <!-- メイン情報エリア -->
-  <main class="container">
-    <h2 class="section-title">Information</h2>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Schedule</h3>
-          <p class="card-text">キャンプの日程や当日の詳細なタイムスケジュールです。</p>
+            <div class="content-overlay">
+                <div class="title-area">
+                    <h1 class="main-title animated-item" style="animation-delay: 0.3s;">Summer</h1>
+                    <div class="sub-title-container animated-item" style="animation-delay: 0.8s;">
+                        <span class="main-title sub-title">Camp</span>
+                        <span class="main-title year">2026</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Location</h3>
-          <p class="card-text">開催場所のキャンプ場へのアクセスや持ち物リストです。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Photos</h3>
-          <p class="card-text">みんなで撮った思い出の写真や動画をまとめたページです。</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- フッター -->
-  <footer>
-    <p>&copy; 2026 Summer Camp. All Rights Reserved.</p>
-  </footer>
+    </a>
 
 </body>
 </html>
