@@ -58,8 +58,8 @@
             padding: 20px;
             width: 100%;
             
-            /* 全体をさらに少し上に引き上げ */
-            transform: translateY(-55px);
+            /* 全体の位置調整 */
+            transform: translateY(-50px);
         }
 
         /* アニメーション共通設定 */
@@ -81,49 +81,59 @@
             }
         }
 
+        /* タイトル全体エリア */
+        .title-area {
+            display: inline-block;
+        }
+
         /* タイトルデザイン */
         .main-title {
             font-family: 'Caveat', cursive;
-            font-size: 5.8rem;
-            line-height: 0.95;
+            font-size: 6rem;
+            line-height: 0.85;
             font-weight: 700;
+            letter-spacing: 4px; /* 字間を少し広げて優雅に */
         }
 
         .sub-title-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-top: -5px;
+            align-items: baseline;
+            margin-top: 5px;
         }
 
         .sub-title {
-            font-size: 5.2rem;
+            font-size: 5.5rem;
             line-height: 1;
+            letter-spacing: 3px; /* Campの字間も広げる */
         }
 
-        /* 2026の文字：葉っぱの枠に収まるようサイズ調整 */
+        /* 2026の文字：右側の葉っぱ枠にピッタリ収まるよう位置をずらす */
         .year {
-            font-size: 3.2rem;
-            margin-left: 12px;
-            letter-spacing: 2px; /* 数字の間隔をほんのり整える */
-            transform: translateY(2px); /* 葉っぱの高さに微調整 */
+            font-size: 4rem;
+            margin-left: 20px; /* Campとの間隔を開けて右の葉っぱ側へ寄せる */
+            letter-spacing: 2px;
+            transform: translateY(-5px) rotate(-2deg); /* 高さと角度の微調整 */
             display: inline-block;
         }
 
         /* スマホ対応（iPhoneの画面幅向け） */
         @media (max-width: 480px) {
             .content-overlay {
-                transform: translateY(-65px); /* スマホでより適切な上位置へ */
+                transform: translateY(-55px);
             }
             .main-title {
-                font-size: 4.2rem;
+                font-size: 4.6rem;
+                letter-spacing: 3px;
             }
             .sub-title {
-                font-size: 3.8rem;
+                font-size: 4.2rem;
+                letter-spacing: 2px;
             }
             .year {
-                font-size: 2.2rem; /* 葉っぱの間にちょうどハマるサイズ */
-                margin-left: 8px;
+                font-size: 3rem; /* 葉っぱの間にピッタリハマるサイズ */
+                margin-left: 16px; /* 右の葉っぱの輪っかの中へ動かす */
+                transform: translateY(-4px) rotate(-2deg);
             }
         }
     </style>
