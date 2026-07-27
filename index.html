@@ -1,169 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summer Camp 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Summer Camp 2026</title>
+  <style>
+    .summer-text {
+      font-size: 4.4rem;
+    }
 
-    <style>
-        /* 基本リセット */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-            font-family: 'Noto Serif JP', serif;
-        }
-
-        /* リンクの装飾解除 */
-        .hero-link {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* 画面全体のコンテナ */
-        .hero-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* 背景画像 */
-        .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center bottom;
-            z-index: 1;
-        }
-
-        /* 背景の上に載せる文字レイヤー */
-        .content-overlay {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #ffffff;
-            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            width: 100%;
-            transform: translateY(-20px);
-        }
-
-        /* アニメーション共通設定 */
-        .animated-item {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* タイトル全体エリア */
-        .title-area {
-            display: inline-block;
-        }
-
-        /* タイトルデザイン（Times New Roman 指定） */
-        .main-title {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 6.8rem;
-            line-height: 0.88;
-            font-weight: 700;
-            letter-spacing: 5px;
-        }
-
-        .sub-title-container {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            margin-top: 4px;
-        }
-
-        .sub-title {
-            font-size: 7.2rem;
-            line-height: 1;
-            letter-spacing: 4px;
-        }
-
-        /* 2026 を Camp と同じサイズ（7.2rem）に指定 */
-        .year {
-            font-size: 7.2rem;
-            margin-left: 20px;
-            letter-spacing: 2px;
-            transform: translateY(-4px) rotate(-2deg);
-            display: inline-block;
-        }
-
-        /* スマホ対応（iPhoneなど） */
-        @media (max-width: 480px) {
-            .content-overlay {
-                transform: translateY(-25px);
-            }
-            .main-title {
-                font-size: 5.2rem;
-                letter-spacing: 4px;
-            }
-            /* Camp のサイズ */
-            .sub-title {
-                font-size: 5.6rem;
-                letter-spacing: 3px;
-            }
-            /* 2026 も Camp と全く同じサイズ（5.6rem）に変更 */
-            .year {
-                font-size: 5.6rem;
-                margin-left: 14px; /* サイズアップに伴い位置を調整 */
-                letter-spacing: 2px;
-                transform: translateY(-2px) rotate(-2deg);
-            }
-        }
-    </style>
+    .camp-text,
+    .year-text {
+      font-size: 4.8rem;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- タップで menu.html に移動 -->
-    <a href="menu.html" class="hero-link">
-        <div class="hero-container">
-            <img src="sc81215.jpg" alt="背景画像" class="bg-image">
-
-            <div class="content-overlay">
-                <div class="title-area">
-                    <h1 class="main-title animated-item" style="animation-delay: 0.3s;">Summer</h1>
-                    <div class="sub-title-container animated-item" style="animation-delay: 0.8s;">
-                        <span class="main-title sub-title">Camp</span>
-                        <span class="main-title year">2026</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
+  <span class="summer-text">Summer</span>
+  <span class="camp-text">Camp</span>
+  <span class="year-text">2026</span>
 
 </body>
 </html>
