@@ -1,138 +1,337 @@
 <!DOCTYPE html>
+
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Summer Camp 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Summer Camp 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+
+
     <style>
+
+        /* 基本リセット */
+
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
 
-        body {
-            font-family: 'Noto Serif JP', serif;
-            background-color: #e3f2fd;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.6) 0%, transparent 40%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 20px;
-        }
 
-        h1 {
-            font-family: 'Caveat', cursive;
-            font-weight: 700;
-            font-size: 3.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 35px;
-            color: #2b2b2b;
-            text-align: center;
-            position: relative;
-        }
 
-        h1::after {
-            content: '///';
-            position: absolute;
-            top: -10px;
-            right: -30px;
-            font-size: 1.2rem;
-            color: #b892ff;
-            letter-spacing: -2px;
-            transform: rotate(15deg);
-        }
+        body, html {
 
-        .menu-container {
             width: 100%;
-            max-width: 340px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
 
-        .menu-btn {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 72px;
-            padding: 0 20px;
-            text-decoration: none;
-            font-family: 'Caveat', cursive;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2b2b2b;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+
             overflow: hidden;
+
+            background-color: #000;
+
+            font-family: 'Noto Serif JP', serif;
+
         }
 
-        .menu-btn::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            border: 2px dashed rgba(255, 255, 255, 0.85);
-            border-radius: 15px;
-            pointer-events: none;
+
+
+        /* リンクの装飾解除 */
+
+        .hero-link {
+
+            display: block;
+
+            width: 100%;
+
+            height: 100%;
+
+            text-decoration: none;
+
+            color: inherit;
+
         }
 
-        .menu-btn::after {
-            content: '›';
-            position: absolute;
-            right: 18px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+
+
+        /* 画面全体のコンテナ */
+
+        .hero-container {
+
+            position: relative;
+
+            width: 100vw;
+
+            height: 100vh;
+
             display: flex;
-            align-items: center;
+
             justify-content: center;
-            font-size: 1.4rem;
-            line-height: 1;
+
+            align-items: center;
+
+            overflow: hidden;
+
+        }
+
+
+
+        /* 背景画像 */
+
+        .bg-image {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center bottom;
+
+            z-index: 1;
+
+        }
+
+
+
+        /* 背景の上に載せる文字レイヤー */
+
+        .content-overlay {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
             color: #ffffff;
-            font-family: sans-serif;
-            font-weight: bold;
-            padding-bottom: 2px;
+
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+
+            padding: 20px;
+
+            width: 100%;
+
+            transform: translateY(-20px);
+
         }
 
-        .btn-pink { background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%); }
-        .btn-pink::after { background-color: #ff8fab; }
 
-        .btn-purple { background: linear-gradient(135deg, #f8f0fc 0%, #e7c6ff 100%); }
-        .btn-purple::after { background-color: #b892ff; }
 
-        .btn-yellow { background: linear-gradient(135deg, #fff9db 0%, #ffe3e3 100%); }
-        .btn-yellow::after { background-color: #f6bd60; }
+        /* アニメーション共通設定 */
 
-        .btn-green { background: linear-gradient(135deg, #f0fff4 0%, #c7f9cc 100%); }
-        .btn-green::after { background-color: #64dfdf; }
+        .animated-item {
 
-        .menu-btn:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
         }
+
+
+
+        @keyframes fadeInUp {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(30px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+
+        /* タイトル全体エリア */
+
+        .title-area {
+
+            display: inline-block;
+
+        }
+
+
+
+        /* タイトルデザイン（Times New Roman 指定） */
+
+        .main-title {
+
+            font-family: 'Times New Roman', Times, serif;
+
+            font-size: 5.8rem; /* 5.2rem ➔ 5.8rem */
+
+            line-height: 0.88;
+
+            font-weight: 700;
+
+            letter-spacing: 5px;
+
+        }
+
+
+
+        .sub-title-container {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: baseline;
+
+            margin-top: 4px;
+
+        }
+
+
+
+        .sub-title {
+
+            font-size: 6.2rem; /* 5.6rem ➔ 6.2rem */
+
+            line-height: 1;
+
+            letter-spacing: 4px;
+
+        }
+
+
+
+        /* 2026 を Camp と同じサイズ（6.2rem）に指定 */
+
+        .year {
+
+            font-size: 6.2rem; /* 5.6rem ➔ 6.2rem */
+
+            margin-left: 16px;
+
+            letter-spacing: 2px;
+
+            transform: translateY(-4px) rotate(-2deg);
+
+            display: inline-block;
+
+        }
+
+
+
+        /* スマホ対応（iPhoneなど） */
+
+        @media (max-width: 480px) {
+
+            .content-overlay {
+
+                transform: translateY(-25px);
+
+            }
+
+            .main-title {
+
+                font-size: 3.8rem; /* 3.2rem ➔ 3.8rem */
+
+                letter-spacing: 4px;
+
+            }
+
+            /* Camp のサイズ */
+
+            .sub-title {
+
+                font-size: 4.2rem; /* 3.6rem ➔ 4.2rem */
+
+                letter-spacing: 3px;
+
+            }
+
+            /* 2026 も Camp と同じサイズ（4.2rem）に変更 */
+
+            .year {
+
+                font-size: 4.2rem; /* 3.6rem ➔ 4.2rem */
+
+                margin-left: 12px;
+
+                letter-spacing: 2px;
+
+                transform: translateY(-2px) rotate(-2deg);
+
+            }
+
+        }
+
     </style>
+
 </head>
+
 <body>
 
-    <h1>CONTENTS</h1>
 
-    <div class="menu-container">
-        <!-- リンク先（href）を正しく書き直しました -->
-        <a href="point.html" class="menu-btn btn-pink">point</a>
-        <a href="schedule.html" class="menu-btn btn-purple">schedule</a>
-        <a href="belongings.html" class="menu-btn btn-yellow">items</a>
-        <a href="member.html" class="menu-btn btn-green">team</a>
-    </div>
+
+    <!-- タップで menu.html に移動 -->
+
+    <a href="menu.html" class="hero-link">
+
+        <div class="hero-container">
+
+            <img src="sc81215.jpg" alt="背景画像" class="bg-image">
+
+
+
+            <div class="content-overlay">
+
+                <div class="title-area">
+
+                    <h1 class="main-title animated-item" style="animation-delay: 0.3s;">Summer</h1>
+
+                    <div class="sub-title-container animated-item" style="animation-delay: 0.8s;">
+
+                        <span class="main-title sub-title">Camp</span>
+
+                        <span class="main-title year">2026</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </a>
+
+
 
 </body>
+
 </html>
