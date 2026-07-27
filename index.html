@@ -58,8 +58,8 @@
             padding: 20px;
             width: 100%;
             
-            /* 全体の位置調整 */
-            transform: translateY(-50px);
+            /* 全体を2mmほど（約8px）下げる調整 */
+            transform: translateY(-42px);
         }
 
         /* アニメーション共通設定 */
@@ -92,7 +92,7 @@
             font-size: 6rem;
             line-height: 0.85;
             font-weight: 700;
-            letter-spacing: 4px; /* 字間を少し広げて優雅に */
+            letter-spacing: 4px;
         }
 
         .sub-title-container {
@@ -102,38 +102,42 @@
             margin-top: 5px;
         }
 
+        /* Camp を大きく (5.5rem -> 6.2rem) */
         .sub-title {
-            font-size: 5.5rem;
+            font-size: 6.2rem;
             line-height: 1;
-            letter-spacing: 3px; /* Campの字間も広げる */
+            letter-spacing: 3px;
         }
 
-        /* 2026の文字：右側の葉っぱ枠にピッタリ収まるよう位置をずらす */
+        /* 2026 を大きく (4rem -> 4.6rem) ＆ 葉っぱの中に納まる配置 */
         .year {
-            font-size: 4rem;
-            margin-left: 20px; /* Campとの間隔を開けて右の葉っぱ側へ寄せる */
+            font-size: 4.6rem;
+            margin-left: 20px;
             letter-spacing: 2px;
-            transform: translateY(-5px) rotate(-2deg); /* 高さと角度の微調整 */
+            transform: translateY(-2px) rotate(-2deg);
             display: inline-block;
         }
 
         /* スマホ対応（iPhoneの画面幅向け） */
         @media (max-width: 480px) {
             .content-overlay {
-                transform: translateY(-55px);
+                /* スマホ時も約2mm分下げ */
+                transform: translateY(-47px);
             }
             .main-title {
                 font-size: 4.6rem;
                 letter-spacing: 3px;
             }
+            /* スマホ時の Camp を大きく (4.2rem -> 4.8rem) */
             .sub-title {
-                font-size: 4.2rem;
+                font-size: 4.8rem;
                 letter-spacing: 2px;
             }
+            /* スマホ時の 2026 を大きく (3rem -> 3.5rem) ＆ 葉っぱの中へ移動 */
             .year {
-                font-size: 3rem; /* 葉っぱの間にピッタリハマるサイズ */
-                margin-left: 16px; /* 右の葉っぱの輪っかの中へ動かす */
-                transform: translateY(-4px) rotate(-2deg);
+                font-size: 3.5rem;
+                margin-left: 18px;
+                transform: translateY(-2px) rotate(-2deg);
             }
         }
     </style>
