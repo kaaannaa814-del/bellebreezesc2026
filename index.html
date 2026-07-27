@@ -56,9 +56,10 @@
             color: #ffffff;
             text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
             padding: 20px;
+            width: 100%;
             
-            /* 背景のBelleBreezeの下あたりに来るよう位置調整 */
-            transform: translateY(-20px);
+            /* 全体をさらに少し上に引き上げ */
+            transform: translateY(-55px);
         }
 
         /* アニメーション共通設定 */
@@ -83,31 +84,46 @@
         /* タイトルデザイン */
         .main-title {
             font-family: 'Caveat', cursive;
-            font-size: 5.5rem;
-            line-height: 1;
+            font-size: 5.8rem;
+            line-height: 0.95;
             font-weight: 700;
         }
 
-        .sub-title {
-            font-size: 5rem;
+        .sub-title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: -5px;
         }
 
-        .year {
-            font-size: 4rem;
-            margin-left: 5px;
+        .sub-title {
+            font-size: 5.2rem;
+            line-height: 1;
         }
 
-        /* スマホ対応 */
+        /* 2026の文字：葉っぱの枠に収まるようサイズ調整 */
+        .year {
+            font-size: 3.2rem;
+            margin-left: 12px;
+            letter-spacing: 2px; /* 数字の間隔をほんのり整える */
+            transform: translateY(2px); /* 葉っぱの高さに微調整 */
+            display: inline-block;
+        }
+
+        /* スマホ対応（iPhoneの画面幅向け） */
         @media (max-width: 480px) {
+            .content-overlay {
+                transform: translateY(-65px); /* スマホでより適切な上位置へ */
+            }
             .main-title {
-                font-size: 4rem;
+                font-size: 4.2rem;
             }
             .sub-title {
-                font-size: 3.5rem;
+                font-size: 3.8rem;
             }
             .year {
-                font-size: 2.8rem;
+                font-size: 2.2rem; /* 葉っぱの間にちょうどハマるサイズ */
+                margin-left: 8px;
             }
         }
     </style>
@@ -121,12 +137,13 @@
         <!-- 浮き上がる文字エリア -->
         <div class="content-overlay">
 
-            <!-- Summer Camp 2026 のみ -->
+            <!-- Summer Camp 2026 -->
             <div class="title-area">
                 <h1 class="main-title animated-item" style="animation-delay: 0.3s;">Summer</h1>
-                <h1 class="main-title sub-title animated-item" style="animation-delay: 0.8s;">
-                    Camp <span class="year">2026</span>
-                </h1>
+                <div class="sub-title-container animated-item" style="animation-delay: 0.8s;">
+                    <span class="main-title sub-title">Camp</span>
+                    <span class="main-title year">2026</span>
+                </div>
             </div>
 
         </div>
