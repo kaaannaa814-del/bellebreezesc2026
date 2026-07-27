@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule - Summer Camp 2026</title>
-    <!-- CaveatフォントとNoto Serif JPフォントを読み込み -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,7 +14,6 @@
 
         body {
             font-family: 'Noto Serif JP', serif;
-            /* 背景色：パステル調の水色と紫のやわらかいグラデーション */
             background-color: #f0f4ff;
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(200, 230, 255, 0.6) 0%, transparent 50%),
@@ -27,7 +25,6 @@
             padding: 30px 20px 60px;
         }
 
-        /* 戻るボタン */
         .back-btn {
             align-self: flex-start;
             text-decoration: none;
@@ -45,7 +42,6 @@
             transform: translateX(-3px);
         }
 
-        /* タイトル */
         h1 {
             font-family: 'Caveat', cursive;
             font-size: 3.8rem;
@@ -57,7 +53,6 @@
             position: relative;
         }
 
-        /* タイトル右上のアクセント斜線 */
         h1::after {
             content: '///';
             position: absolute;
@@ -69,7 +64,6 @@
             transform: rotate(15deg);
         }
 
-        /* Day切り替えタブ */
         .day-tabs {
             display: flex;
             gap: 8px;
@@ -92,7 +86,6 @@
             color: #8272a8;
         }
 
-        /* アクティブなタブ（水色） */
         .day-tab.active {
             background-color: #8ecaef;
             color: #ffffff;
@@ -100,7 +93,6 @@
             box-shadow: 0 4px 12px rgba(142, 202, 239, 0.4);
         }
 
-        /* スケジュールカード全体 */
         .schedule-card {
             width: 100%;
             max-width: 380px;
@@ -112,7 +104,6 @@
             border: 2px solid #eef2ff;
         }
 
-        /* 日程タイトルの表示エリア */
         .schedule-day-content {
             display: none;
         }
@@ -146,22 +137,23 @@
             background: linear-gradient(to right, #9cd5ff, #d8b4fe);
         }
 
-        /* タイムライン */
+        /* タイムライン（位置の基準調整） */
         .timeline {
             position: relative;
-            padding-left: 20px;
+            padding-left: 24px;
         }
 
-        /* 水色・紫グラデーションの縦線 */
+        /* 縦の棒（中心位置を left: 6px に設定） */
         .timeline::before {
             content: '';
             position: absolute;
-            left: 4px;
-            top: 6px;
-            bottom: 6px;
+            left: 6px;
+            top: 10px;
+            bottom: 10px;
             width: 4px;
             background: linear-gradient(to bottom, #8ecaef, #c8b6ff);
             border-radius: 2px;
+            transform: translateX(-50%); /* 4pxの太さの半分ずらして中央合わせ */
         }
 
         /* タイムライン項目 */
@@ -177,18 +169,18 @@
             margin-bottom: 0;
         }
 
-        /* 丸ポチ */
+        /* 丸ポチ（中心位置を棒の中心 left: 6px にぴったり一致） */
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -20px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
+            left: -18px; /* パディング24px - 6px = -18px で棒の中心と一致 */
+            top: 0.7em;  /* テキストの高さに自然に合わせる */
+            width: 12px;
+            height: 12px;
             background-color: #ffffff;
             border: 3px solid #8ecaef;
             border-radius: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%); /* X方向Y方向ともに真ん中で揃える */
             z-index: 1;
         }
 
@@ -210,12 +202,10 @@
 </head>
 <body>
 
-    <!-- 戻るボタン -->
     <a href="index.html" class="back-btn">‹ Back</a>
 
     <h1>Schedule</h1>
 
-    <!-- 日程切替タブボタン -->
     <div class="day-tabs">
         <button class="day-tab active" onclick="showDay(1)">Day 1</button>
         <button class="day-tab" onclick="showDay(2)">Day 2</button>
@@ -287,16 +277,13 @@
     </div>
 
     <script>
-        // タブ切り替え用のJS処理
         function showDay(dayNumber) {
-            // すべてのコンテンツとタブからactiveクラスを外す
             const contents = document.querySelectorAll('.schedule-day-content');
             const tabs = document.querySelectorAll('.day-tab');
 
             contents.forEach(content => content.classList.remove('active'));
             tabs.forEach(tab => tab.classList.remove('active'));
 
-            // 選択された日だけactiveを付与
             document.getElementById('day' + dayNumber).classList.add('active');
             tabs[dayNumber - 1].classList.add('active');
         }
