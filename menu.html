@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Summer Camp 2026</title>
-    <!-- 元のSummerCampコードと同じフォントの読み込み -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,9 +13,7 @@
         }
 
         body {
-            /* 基本フォントを元のNoto Serif JPに指定 */
             font-family: 'Noto Serif JP', serif;
-            /* 背景色：薄い水色 */
             background-color: #e3f2fd;
             background-image: 
                 radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
@@ -29,7 +26,6 @@
         }
 
         h1 {
-            /* 見出しフォントを元のCaveat（ウェイト 700）に指定 */
             font-family: 'Caveat', cursive;
             font-weight: 700;
             font-size: 3.8rem;
@@ -40,14 +36,13 @@
             position: relative;
         }
 
-        /* タイトル右上の斜線アクセント */
         h1::after {
             content: '///';
             position: absolute;
             top: -10px;
             right: -30px;
             font-size: 1.2rem;
-            color: #ffb7b2;
+            color: #b892ff;
             letter-spacing: -2px;
             transform: rotate(15deg);
         }
@@ -69,7 +64,6 @@
             height: 72px;
             padding: 0 20px;
             text-decoration: none;
-            /* ボタンテキストも見出しと同じCaveatフォントを適用 */
             font-family: 'Caveat', cursive;
             font-size: 2rem;
             font-weight: 700;
@@ -80,7 +74,6 @@
             overflow: hidden;
         }
 
-        /* ボタン内側の破線枠 */
         .menu-btn::before {
             content: '';
             position: absolute;
@@ -93,7 +86,6 @@
             pointer-events: none;
         }
 
-        /* 矢印アイコン（＞） */
         .menu-btn::after {
             content: '›';
             position: absolute;
@@ -112,36 +104,18 @@
             padding-bottom: 2px;
         }
 
-        /* ボタンのカラーバリエーション */
-        .btn-pink {
-            background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
-        }
-        .btn-pink::after {
-            background-color: #ff8fab;
-        }
+        .btn-pink { background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%); }
+        .btn-pink::after { background-color: #ff8fab; }
 
-        .btn-purple {
-            background: linear-gradient(135deg, #f8f0fc 0%, #e7c6ff 100%);
-        }
-        .btn-purple::after {
-            background-color: #b892ff;
-        }
+        .btn-purple { background: linear-gradient(135deg, #f8f0fc 0%, #e7c6ff 100%); }
+        .btn-purple::after { background-color: #b892ff; }
 
-        .btn-yellow {
-            background: linear-gradient(135deg, #fff9db 0%, #ffe3e3 100%);
-        }
-        .btn-yellow::after {
-            background-color: #f6bd60;
-        }
+        .btn-yellow { background: linear-gradient(135deg, #fff9db 0%, #ffe3e3 100%); }
+        .btn-yellow::after { background-color: #f6bd60; }
 
-        .btn-green {
-            background: linear-gradient(135deg, #f0fff4 0%, #c7f9cc 100%);
-        }
-        .btn-green::after {
-            background-color: #64dfdf;
-        }
+        .btn-green { background: linear-gradient(135deg, #f0fff4 0%, #c7f9cc 100%); }
+        .btn-green::after { background-color: #64dfdf; }
 
-        /* タップ時のアニメーション */
         .menu-btn:active {
             transform: scale(0.97);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -153,8 +127,9 @@
     <h1>CONTENTS</h1>
 
     <div class="menu-container">
-        <a href="schedule.html" class="menu-btn btn-pink">point</a>
-        <a href="access.html" class="menu-btn btn-purple">schedule</a>
+        <!-- リンク先（href）を正しく書き直しました -->
+        <a href="point.html" class="menu-btn btn-pink">point</a>
+        <a href="schedule.html" class="menu-btn btn-purple">schedule</a>
         <a href="belongings.html" class="menu-btn btn-yellow">items</a>
         <a href="member.html" class="menu-btn btn-green">team</a>
     </div>
