@@ -3,186 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team - Summer Camp 2026</title>
-    <!-- 手書き風フォント Caveat と Noto Serif JP を読み込み -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <title>TEAM</title>
+    <!-- Googleフォント（M PLUS Rounded 1c） -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+            background-color: #eef6fd;
+        }
+        *, *::before, *::after {
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Noto Serif JP', serif;
-            /* スケジュール画面と共通のパステルブルー＆パープルのやわらかいグラデーション背景 */
-            background-color: #e3f2fd;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.7) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(225, 210, 255, 0.6) 0%, transparent 40%);
+            margin: 0;
+            padding: 15px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: #444;
+            /* contents画面に合わせた薄い水色の背景 */
+            background: linear-gradient(135deg, #e3f2fd 0%, #eef6fd 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px 60px;
         }
-
-        /* 戻るボタン */
-        .back-btn {
-            align-self: flex-start;
-            text-decoration: none;
-            color: #5b628f;
-            font-family: 'Caveat', cursive;
-            font-size: 1.6rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: transform 0.2s;
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
         }
-        .back-btn:active {
-            transform: translateX(-3px);
-        }
-
-        /* タイトル */
-        h1 {
-            font-family: 'Caveat', cursive;
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            color: #2b2b2b;
+        /* タイトル部分 (CONTENTS画面のデザインに合わせる) */
+        .header-wrapper {
+            position: relative;
             text-align: center;
-            position: relative;
+            margin-bottom: 25px;
+            padding-top: 10px;
         }
-
-        /* タイトルのアクセント斜線 */
-        h1::after {
-            content: '///';
-            position: absolute;
-            top: -8px;
-            right: -32px;
-            font-size: 1.2rem;
-            color: #b892ff;
-            letter-spacing: -2px;
-            transform: rotate(15deg);
-        }
-
-        /* チーム紹介カード全体のコンテナ */
-        .team-container {
-            width: 100%;
-            max-width: 380px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* 各チームのカード（スケジュール画面と共通のカードデザイン） */
-        .team-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 28px;
-            padding: 26px 24px;
-            box-shadow: 0 10px 30px rgba(138, 149, 190, 0.15);
-            position: relative;
-            border: 2px dashed #dbeafe;
-        }
-
-        /* チーム名ヘッダー */
-        .team-title {
-            font-family: 'Caveat', cursive;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #4a5568;
-            padding-bottom: 10px;
-            margin-bottom: 18px;
-            position: relative;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* チーム名の下のグラデーションライン */
-        .team-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, #a2d2ff, #b5838d, #c8b6ff);
-            border-radius: 2px;
-        }
-
-        /* メンバーリスト */
-        .member-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-left: 4px;
-        }
-
-        .member-item {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #333333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* リストのアイコン（パステルブルーの丸ポチ風） */
-        .member-item::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background-color: #a2d2ff;
-            border-radius: 50%;
+        .header-title {
             display: inline-block;
+            font-size: 38px;
+            font-style: italic;
+            font-weight: 800;
+            color: #333;
+            letter-spacing: 2px;
         }
+        /* 右上の三本線の装飾 */
+        .deco-lines {
+            position: absolute;
+            top: 5px;
+            right: 25%;
+            width: 20px;
+            height: 15px;
+        }
+        .deco-lines line {
+            stroke: #b388ff;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        /* メンバーを囲む大きなカード（CONTENTSのボタンと同じ二重ステッチ風） */
+        .board-section {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2.5px dashed #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .grid-3 {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .grid-3-col {
+            display: table-cell;
+            width: 33.333%;
+            padding: 0 5px;
+            vertical-align: top;
+        }
+        .grid-2 {
+            display: table;
+            width: 70%;
+            margin: 0 auto;
+            table-layout: fixed;
+        }
+        .grid-2-col {
+            display: table-cell;
+            width: 50%;
+            padding: 0 10px;
+            vertical-align: top;
+        }
+        .team-column {
+            display: block;
+        }
+        
+        /* チームヘッダー */
+        .team-header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            padding: 6px;
+            border-radius: 12px 12px 4px 4px;
+            margin-bottom: 6px;
+        }
+
+        /* CONTENTSのボタンに合わせた白地のカード（ステッチ風） */
+        .member-card {
+            background: #ffffff;
+            border: 2px dashed #ffccd5; /* デフォルトピンクのステッチ */
+            border-radius: 10px;
+            padding: 6px 10px;
+            font-size: 11.5px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            min-height: 26px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .member-card div {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* チームごとのカラー（CONTENTSのパステル調ボタンに完全準拠） */
+        /* Team A: ピンク */
+        .team-a .team-header { color: #ff6b8b; background: #ffccd5; border: 2px dashed #fff; }
+        .team-a .member-card { border-color: #ffccd5; }
+
+        /* Team B: グリーン */
+        .team-b .team-header { color: #2ecc71; background: #d4efdf; border: 2px dashed #fff; }
+        .team-b .member-card { border-color: #d4efdf; }
+
+        /* Team C: ブルー */
+        .team-c .team-header { color: #3498db; background: #d4e6f1; border: 2px dashed #fff; }
+        .team-c .member-card { border-color: #d4e6f1; }
+
+        /* Team D: オレンジ（itemsボタンの色） */
+        .team-d .team-header { color: #f39c12; background: #fdebd0; border: 2px dashed #fff; }
+        .team-d .member-card { border-color: #fdebd0; }
+
+        /* Team E: パープル（scheduleボタンの色） */
+        .team-e .team-header { color: #9b59b6; background: #e8daef; border: 2px dashed #fff; }
+        .team-e .member-card { border-color: #e8daef; }
     </style>
 </head>
 <body>
-
-    <!-- 戻るボタン -->
-    <a href="menu.html" class="back-btn">‹ Back</a>
-
-    <h1>Team</h1>
-
-    <div class="team-container">
-        <!-- チーム1 -->
-        <div class="team-card">
-            <div class="team-title">Team A</div>
-            <ul class="member-list">
-                <li class="member-item">メンバー名前 1</li>
-                <li class="member-item">メンバー名前 2</li>
-                <li class="member-item">メンバー名前 3</li>
-            </ul>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header-wrapper">
+            <svg class="deco-lines" viewBox="0 0 24 20">
+                <line x1="2" y1="18" x2="8" y2="2" />
+                <line x1="9" y1="18" x2="15" y2="2" />
+                <line x1="16" y1="18" x2="22" y2="2" />
+            </svg>
+            <div class="header-title">TEAM</div>
         </div>
 
-        <!-- チーム2 -->
-        <div class="team-card">
-            <div class="team-title">Team B</div>
-            <ul class="member-list">
-                <li class="member-item">メンバー名前 1</li>
-                <li class="member-item">メンバー名前 2</li>
-                <li class="member-item">メンバー名前 3</li>
-            </ul>
+        <div class="board-section">
+            <div class="grid-3">
+                <div class="grid-3-col">
+                    <div class="team-column team-a">
+                        <div class="team-header">A</div>
+                        <div class="member-card"><div>・まい</div></div>
+                        <div class="member-card"><div>・はらりく</div></div>
+                        <div class="member-card"><div>・みさき</div><div>・みお</div><div>・たまき</div></div>
+                        <div class="member-card"><div>・しょうや</div><div>・たつき</div></div>
+                        <div class="member-card"><div>・さやか</div><div>・ななみ</div></div>
+                        <div class="member-card"><div>・大介</div><div>・みか</div></div>
+                    </div>
+                </div>
+                <div class="grid-3-col">
+                    <div class="team-column team-b">
+                        <div class="team-header">B</div>
+                        <div class="member-card"><div>・ゆう</div></div>
+                        <div class="member-card"><div>・がく</div><div>・れん</div></div>
+                        <div class="member-card"><div>・あいり</div><div>・すぎみん</div></div>
+                        <div class="member-card"><div>・宮内陽向</div><div>・ごたんだ</div></div>
+                        <div class="member-card"><div>・ヒカル</div><div>・ちさこ</div></div>
+                        <div class="member-card"><div>・もえ</div><div>・ゆうだ</div></div>
+                    </div>
+                </div>
+                <div class="grid-3-col">
+                    <div class="team-column team-c">
+                        <div class="team-header">C</div>
+                        <div class="member-card"><div>・ひびき</div></div>
+                        <div class="member-card"><div>・そら</div><div>・たける</div></div>
+                        <div class="member-card"><div>・なまき</div><div>・ひいろ</div></div>
+                        <div class="member-card"><div>・ゆうた</div><div>・宮内陽光</div></div>
+                        <div class="member-card"><div>・しおね</div><div>・あや</div><div>・ももか</div></div>
+                        <div class="member-card"><div>・じんない</div><div>・長崎</div></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- チーム3 -->
-        <div class="team-card">
-            <div class="team-title">Team C</div>
-            <ul class="member-list">
-                <li class="member-item">メンバー名前 1</li>
-                <li class="member-item">メンバー名前 2</li>
-                <li class="member-item">メンバー名前 3</li>
-            </ul>
+        <div class="board-section">
+            <div class="grid-2">
+                <div class="grid-2-col">
+                    <div class="team-column team-d">
+                        <div class="team-header">D</div>
+                        <div class="member-card"><div>・はるな</div><div>・さなみ</div></div>
+                        <div class="member-card"><div>・りょう</div><div>・たいが</div></div>
+                        <div class="member-card"><div>・悠お</div><div>・はるか</div></div>
+                        <div class="member-card"><div>・いなむー</div><div>・津田陽向</div></div>
+                        <div class="member-card"><div>・はるな</div><div>・みなみ</div></div>
+                        <div class="member-card"><div>・ゆい</div><div>・ゆうだい</div></div>
+                    </div>
+                </div>
+                <div class="grid-2-col">
+                    <div class="team-column team-e">
+                        <div class="team-header">E</div>
+                        <div class="member-card"><div>・かな</div><div>・さやか</div></div>
+                        <div class="member-card"><div>・しゅうた</div></div>
+                        <div class="member-card"><div>・あいり</div><div>・かえで</div></div>
+                        <div class="member-card"><div>・ゆうせい</div></div>
+                        <div class="member-card"><div>・ゆづき</div><div>・みわこ</div></div>
+                        <div class="member-card"><div>・いつき</div><div>・こうせい</div><div>・たまき</div></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
