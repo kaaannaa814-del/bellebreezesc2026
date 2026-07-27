@@ -1,1 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items - Summer Camp 2026</title>
+    <!-- 手書き風フォント Caveat と 丸ゴシック M PLUS Rounded 1c を読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+            background-color: #fffde7;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: #333;
+            /* パステルイエロー基調のグラデーション */
+            background: linear-gradient(135deg, #fffde7 0%, #fff9c4 60%, #e1f5fe 100%);
+            min-height: 100vh;
+            padding: 20px 12px 40px 12px;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
 
+        /* タイトル部分 */
+        .header-wrapper {
+            position: relative;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-top: 10px;
+        }
+        .header-title {
+            display: inline-block;
+            font-family: 'Caveat', cursive;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #4a3b32;
+            letter-spacing: 2px;
+        }
+        /* 右上の三本線の装飾 */
+        .deco-lines {
+            position: absolute;
+            top: 5px;
+            right: 25%;
+            width: 20px;
+            height: 15px;
+        }
+        .deco-lines line {
+            stroke: #81d4fa;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+        }
+
+        /* カプセル型ボタン */
+        .tab-menu {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            flex: 1;
+            max-width: 140px;
+            padding: 10px 8px;
+            background: #ffffff;
+            border: 2px solid #fbc02d;
+            border-radius: 25px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f57f17;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 8px rgba(251, 192, 45, 0.2);
+            text-align: center;
+            white-space: nowrap;
+        }
+        .tab-btn.active {
+            background: #fbc02d;
+            color: #ffffff;
+            border-color: #fbc02d;
+            box-shadow: 0 4px 12px rgba(251, 192, 45, 0.4);
+        }
+
+        /* 大きな白カード */
+        .board-section {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 28px;
+            padding: 24px 20px;
+            margin-bottom: 15px;
+            border: 2px solid #fff59d;
+            box-shadow: 0 10px 25px rgba(251, 192, 45, 0.15);
+        }
+
+        /* 切り替えコンテンツ表示領域 */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* サブタイトル */
+        .content-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #4a3b32;
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+        .content-divider {
+            height: 3px;
+            background: linear-gradient(to right, #ffee58 0%, #81d4fa 100%);
+            border: none;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+
+        /* カテゴリ見出し */
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f57f17;
+            background: #fffde7;
+            padding: 6px 14px;
+            border-left: 5px solid #fbc02d;
+            border-radius: 4px;
+            margin: 20px 0 10px 0;
+        }
+        .category-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* 持ち物用（四角形チェックボックス） */
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .item-list li {
+            border-bottom: 1px dashed #fff176;
+        }
+        .item-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-label {
+            display: flex;
+            align-items: center;
+            padding: 10px 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a5568;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .item-checkbox {
+            display: none;
+        }
+
+        .custom-check {
+            width: 22px;
+            height: 22px;
+            background-color: #fffde7;
+            border: 2.5px solid #fbc02d;
+            border-radius: 6px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            position: relative;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        .item-label:hover .custom-check {
+            background-color: #fff9c4;
+        }
+
+        .item-checkbox:checked + .custom-check {
+            background-color: #fbc02d;
+            border-color: #fbc02d;
+        }
+
+        .item-checkbox:checked + .custom-check::after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid #ffffff;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+        }
+
+        .item-checkbox:checked ~ .item-text {
+            color: #a0aec0;
+            text-decoration: line-through;
+        }
+
+        /* 買ったもの用（通常リストアイコン） */
+        .simple-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .simple-list li {
+            position: relative;
+            padding: 12px 6px 12px 32px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a5568;
+            border-bottom: 1px dashed #fff176;
+        }
+        .simple-list li:last-child {
+            border-bottom: none;
+        }
+        .simple-list li::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            border: 2.5px solid #fbc02d;
+            background-color: #fffde7;
+            border-radius: 50%;
+        }
+
+        /* Google フォーム用の枠 */
+        .form-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .form-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- items ヘッダー -->
+        <div class="header-wrapper">
+            <svg class="deco-lines" viewBox="0 0 24 20">
+                <line x1="2" y1="18" x2="8" y2="2" />
+                <line x1="9" y1="18" x2="15" y2="2" />
+                <line x1="16" y1="18" x2="22" y2="2" />
+            </svg>
+            <div class="header-title">items</div>
+        </div>
+
+        <!-- カプセル型ボタン -->
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'tab1')">持ち物</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">買ってほしいもの</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab3')">買ったもの</button>
+        </div>
+
+        <!-- メインコンテンツボード -->
+        <div class="board-section">
+            
+            <!-- 1. 持ち物 -->
+            <div id="tab1" class="tab-content active">
+                <div class="content-title">持ち物</div>
+                <div class="content-divider"></div>
+
+                <!-- 日用品 -->
+                <div class="category-title">日用品</div>
+                <ul class="item-list">
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-1"><span class="custom-check"></span><span class="item-text">歯ブラシ</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-2"><span class="custom-check"></span><span class="item-text">ハンカチ</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-3"><span class="custom-check"></span><span class="item-text">ティッシュ</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-4"><span class="custom-check"></span><span class="item-text">眼鏡、コンタクト</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-5"><span class="custom-check"></span><span class="item-text">日焼け止め</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-6"><span class="custom-check"></span><span class="item-text">汗拭きシート</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-7"><span class="custom-check"></span><span class="item-text">シャンプー、コンディショナー（備え付け有）</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-8"><span class="custom-check"></span><span class="item-text">洗顔料、メイク落とし</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-9"><span class="custom-check"></span><span class="item-text">化粧品</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-10"><span class="custom-check"></span><span class="item-text">剃刀</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-11"><span class="custom-check"></span><span class="item-text">生理用品</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-12"><span class="custom-check"></span><span class="item-text">ハンガー</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-13"><span class="custom-check"></span><span class="item-text">洗濯ネット</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-14"><span class="custom-check"></span><span class="item-text">ビニール袋</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-15"><span class="custom-check"></span><span class="item-text">ヘアアイロンドライヤー（持ってこれる人）</span></label></li>
+                </ul>
+
+                <!-- 衣類 -->
+                <div class="category-title">衣類</div>
+                <ul class="item-list">
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-1"><span class="custom-check"></span><span class="item-text">練習着上下２，３着くらい</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-2"><span class="custom-check"></span><span class="item-text">パジャマ</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-3"><span class="custom-check"></span><span class="item-text">下着</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-4"><span class="custom-check"></span><span class="item-text">タオル</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-5"><span class="custom-check"></span><span class="item-text">靴下</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-6"><span class="custom-check"></span><span class="item-text">バスタオル</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-7"><span class="custom-check"></span><span class="item-text">着替え</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-8"><span class="custom-check"></span><span class="item-text">帽子</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-9"><span class="custom-check"></span><span class="item-text">サンダル（川遊び用）</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-10"><span class="custom-check"></span><span class="item-text">コートにもっていく小さいバック</span></label></li>
+                </ul>
+
+                <!-- 貴重品 -->
+                <div class="category-title">貴重品</div>
+                <ul class="item-list">
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-1"><span class="custom-check"></span><span class="item-text">財布</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-2"><span class="custom-check"></span><span class="item-text">合宿費</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-3"><span class="custom-check"></span><span class="item-text">スマホ</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-4"><span class="custom-check"></span><span class="item-text">充電器</span></label></li>
+                </ul>
+
+                <!-- その他 -->
+                <div class="category-title">その他</div>
+                <ul class="item-list">
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item4-1"><span class="custom-check"></span><span class="item-text">１日目昼食</span></label></li>
+                </ul>
+            </div>
+
+            <!-- 2. 買ってほしいもの（Googleフォーム） -->
+            <div id="tab2" class="tab-content">
+                <div class="content-title">買ってほしいもの</div>
+                <div class="content-divider"></div>
+                <div class="form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc-wgknkZAP0-7VVxrPim7e74fHUnWppACK1Au3KZXSQ75Yig/viewform?embedded=true">読み込み中…</iframe>
+                </div>
+            </div>
+
+            <!-- 3. 買ったもの（通常テキストリスト） -->
+            <div id="tab3" class="tab-content">
+                <div class="content-title">買ったもの</div>
+                <div class="content-divider"></div>
+                <ul class="simple-list">
+                    <li>ーーー</li>
+                    <li>ーーー</li>
+                    <li>ーーー</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // タブ切り替え処理
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // 持ち物のチェック状態保存（LocalStorage）
+        document.addEventListener('DOMContentLoaded', function() {
+            var checkboxes = document.querySelectorAll('.item-checkbox');
+
+            checkboxes.forEach(function(checkbox) {
+                var savedState = localStorage.getItem('camp_check_' + checkbox.id);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                }
+
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem('camp_check_' + checkbox.id, checkbox.checked);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
