@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team - Summer Camp 2026</title>
-    <!-- 手書き風フォント Caveat と Noto Serif JP を読み込み -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 手書き風フォント Caveat と 丸ゴシック M PLUS Rounded 1c を読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @page {
             size: A4 portrait;
@@ -18,7 +18,8 @@
             padding: 0;
         }
         body {
-            font-family: 'Noto Serif JP', serif;
+            /* フォントを丸ゴシック体に変更 */
+            font-family: 'M PLUS Rounded 1c', sans-serif;
             color: #444;
             background: linear-gradient(135deg, #e3f2fd 0%, #eef6fd 100%);
             min-height: 100vh;
@@ -106,8 +107,27 @@
             margin-bottom: 6px;
         }
 
+        /* カードと学年ラベルを横並びにする行コンテナ */
+        .member-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            gap: 6px;
+        }
+
+        /* 外側の学年・性別ラベル */
+        .category-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #666;
+            white-space: nowrap;
+            min-width: 38px;
+            text-align: right;
+        }
+
         /* 白地のカード */
         .member-card {
+            flex: 1;
             background: #ffffff;
             border: 2px dashed #ffccd5;
             border-radius: 10px;
@@ -115,7 +135,6 @@
             font-size: 11.5px;
             font-weight: 700;
             line-height: 1.4;
-            margin-bottom: 6px;
             min-height: 26px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
@@ -159,34 +178,52 @@
                 <div class="grid-3-col">
                     <div class="team-column team-a">
                         <div class="team-header">A</div>
-                        <div class="member-card"><div>・まい</div></div>
-                        <div class="member-card"><div>・はらりく</div></div>
-                        <div class="member-card"><div>・みさき</div><div>・みお</div><div>・たまき</div></div>
-                        <div class="member-card"><div>・しょうや</div><div>・たつき</div></div>
-                        <div class="member-card"><div>・さやか</div><div>・ななみ</div></div>
-                        <div class="member-card"><div>・大介</div><div>・みか</div></div>
+                        <div class="member-row">
+                            <span class="category-label">3年</span>
+                            <div class="member-card"><div>・まい</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">2男</span>
+                            <div class="member-card"><div>・はらりく</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">2女</span>
+                            <div class="member-card"><div>・みさき</div><div>・みお</div><div>・たまき</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">1男</span>
+                            <div class="member-card"><div>・しょうや</div><div>・たつき</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">1女</span>
+                            <div class="member-card"><div>・さやか</div><div>・ななみ</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">OBOG</span>
+                            <div class="member-card"><div>・大介</div><div>・みか</div></div>
+                        </div>
                     </div>
                 </div>
                 <div class="grid-3-col">
                     <div class="team-column team-b">
                         <div class="team-header">B</div>
-                        <div class="member-card"><div>・ゆう</div></div>
-                        <div class="member-card"><div>・がく</div><div>・れん</div></div>
-                        <div class="member-card"><div>・あいり</div><div>・すぎみん</div></div>
-                        <div class="member-card"><div>・宮内陽向</div><div>・ごたんだ</div></div>
-                        <div class="member-card"><div>・ヒカル</div><div>・ちさこ</div></div>
-                        <div class="member-card"><div>・もえ</div><div>・ゆうだ</div></div>
+                        <div class="member-row"><div class="member-card"><div>・ゆう</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・がく</div><div>・れん</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・あいり</div><div>・すぎみん</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・宮内陽向</div><div>・ごたんだ</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・ヒカル</div><div>・ちさこ</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・もえ</div><div>・ゆうだ</div></div></div>
                     </div>
                 </div>
                 <div class="grid-3-col">
                     <div class="team-column team-c">
                         <div class="team-header">C</div>
-                        <div class="member-card"><div>・ひびき</div></div>
-                        <div class="member-card"><div>・そら</div><div>・たける</div></div>
-                        <div class="member-card"><div>・なまき</div><div>・ひいろ</div></div>
-                        <div class="member-card"><div>・ゆうた</div><div>・宮内陽光</div></div>
-                        <div class="member-card"><div>・しおね</div><div>・あや</div><div>・ももか</div></div>
-                        <div class="member-card"><div>・じんない</div><div>・長崎</div></div>
+                        <div class="member-row"><div class="member-card"><div>・ひびき</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・そら</div><div>・たける</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・なまき</div><div>・ひいろ</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・ゆうた</div><div>・宮内陽光</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・しおね</div><div>・あや</div><div>・ももか</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・じんない</div><div>・長崎</div></div></div>
                     </div>
                 </div>
             </div>
@@ -197,23 +234,41 @@
                 <div class="grid-2-col">
                     <div class="team-column team-d">
                         <div class="team-header">D</div>
-                        <div class="member-card"><div>・はるな</div><div>・さなみ</div></div>
-                        <div class="member-card"><div>・りょう</div><div>・たいが</div></div>
-                        <div class="member-card"><div>・なお</div><div>・はるか</div></div>
-                        <div class="member-card"><div>・いなむー</div><div>・津田陽向</div></div>
-                        <div class="member-card"><div>・はるな</div><div>・みなみ</div></div>
-                        <div class="member-card"><div>・ゆい</div><div>・ゆうだい</div></div>
+                        <div class="member-row">
+                            <span class="category-label">3年</span>
+                            <div class="member-card"><div>・はるな</div><div>・さなみ</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">2男</span>
+                            <div class="member-card"><div>・りょう</div><div>・たいが</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">2女</span>
+                            <div class="member-card"><div>・悠お</div><div>・はるか</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">1男</span>
+                            <div class="member-card"><div>・いなむー</div><div>・津田陽向</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">1女</span>
+                            <div class="member-card"><div>・はるな</div><div>・みなみ</div></div>
+                        </div>
+                        <div class="member-row">
+                            <span class="category-label">OBOG</span>
+                            <div class="member-card"><div>・ゆい</div><div>・ゆうだい</div></div>
+                        </div>
                     </div>
                 </div>
                 <div class="grid-2-col">
                     <div class="team-column team-e">
                         <div class="team-header">E</div>
-                        <div class="member-card"><div>・かな</div><div>・さやか</div></div>
-                        <div class="member-card"><div>・しゅうた</div></div>
-                        <div class="member-card"><div>・あいり</div><div>・かえで</div></div>
-                        <div class="member-card"><div>・ゆうせい</div></div>
-                        <div class="member-card"><div>・ゆづき</div><div>・みわこ</div></div>
-                        <div class="member-card"><div>・いつき</div><div>・こうせい</div><div>・たまき</div></div>
+                        <div class="member-row"><div class="member-card"><div>・かな</div><div>・さやか</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・しゅうた</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・あいり</div><div>・かえで</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・ゆうせい</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・ゆづき</div><div>・みわこ</div></div></div>
+                        <div class="member-row"><div class="member-card"><div>・いつき</div><div>・こうせい</div><div>・たまき</div></div></div>
                     </div>
                 </div>
             </div>
