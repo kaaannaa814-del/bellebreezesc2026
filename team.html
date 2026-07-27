@@ -1,1 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 10mm;
+            background-color: #fceef5;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 20px 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            color: #444;
+            background: linear-gradient(135deg, #fce4ec 0%, #e0f7fa 50%, #f3e5f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .main-wrapper {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            padding: 20px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* 画面上部のTEAMロゴ風デザイン（白いフチと影） */
+        .header-title {
+            text-align: center;
+            font-size: 42px;
+            font-style: italic;
+            font-weight: 700;
+            color: #2c2c2c;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 
+                -2px -2px 0 #fff,  2px -2px 0 #fff,
+                -2px  2px 0 #fff,  2px  2px 0 #fff,
+                0px -2px 0 #fff,  0px  2px 0 #fff,
+                -2px  0px 0 #fff,  2px  0px 0 #fff,
+                0px 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 各ブロック（A-C, D-E）の白い背景枠 */
+        .team-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 15px 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 3px solid #ffffff;
+        }
+
+        .grid-3 {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .col-3 {
+            display: table-cell;
+            width: 33.333%;
+            padding: 0 3px;
+            vertical-align: top;
+        }
+
+        .grid-2 {
+            display: table;
+            width: 76%;
+            margin: 0 auto;
+            table-layout: fixed;
+        }
+        .col-2 {
+            display: table-cell;
+            width: 50%;
+            padding: 0 6px;
+            vertical-align: top;
+        }
+
+        /* 各チームのカラム */
+        .team-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* チームのタブ風ヘッダー */
+        .team-header {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 0;
+            border-radius: 10px 10px 4px 4px;
+            margin-bottom: 2px;
+        }
+
+        /* メンバーカード */
+        .member-card {
+            border-radius: 8px;
+            padding: 5px 6px;
+            font-size: 10.5px;
+            line-height: 1.35;
+            min-height: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .member-card div {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* カラーテーマ（A〜E） */
+        .team-a .team-header { color: #e91e63; background: #fff0f3; border: 1.5px dashed #f8bbd0; }
+        .team-a .member-card { border: 1.5px solid #f8bbd0; background: #fffdfd; }
+
+        .team-b .team-header { color: #2e7d32; background: #f1f8f1; border: 1.5px dashed #c8e6c9; }
+        .team-b .member-card { border: 1.5px solid #c8e6c9; background: #fcfdfc; }
+
+        .team-c .team-header { color: #1565c0; background: #f0f7ff; border: 1.5px dashed #bbdefb; }
+        .team-c .member-card { border: 1.5px solid #bbdefb; background: #fafcff; }
+
+        .team-d .team-header { color: #e65100; background: #fff8f0; border: 1.5px dashed #ffe0b2; }
+        .team-d .member-card { border: 1.5px solid #ffe0b2; background: #fffefb; }
+
+        .team-e .team-header { color: #6a1b9a; background: #faf2fc; border: 1.5px dashed #e1bee7; }
+        .team-e .member-card { border: 1.5px solid #e1bee7; background: #fefcfd; }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- ロゴ風タイトル -->
+        <div class="header-title">TEAM</div>
+
+        <!-- A, B, C チームボックス -->
+        <div class="team-box">
+            <div class="grid-3">
+                <div class="col-3">
+                    <div class="team-col team-a">
+                        <div class="team-header">A</div>
+                        <div class="member-card"><div>・まい</div></div>
+                        <div class="member-card"><div>・はらりく</div></div>
+                        <div class="member-card"><div>・みさき</div><div>・みお</div><div>・たまき</div></div>
+                        <div class="member-card"><div>・しょうや</div><div>・たつき</div></div>
+                        <div class="member-card"><div>・さやか</div><div>・ななみ</div></div>
+                        <div class="member-card"><div>・大介</div><div>・みか</div></div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="team-col team-b">
+                        <div class="team-header">B</div>
+                        <div class="member-card"><div>・ゆう</div></div>
+                        <div class="member-card"><div>・がく</div><div>・れん</div></div>
+                        <div class="member-card"><div>・あいり</div><div>・すぎみん</div></div>
+                        <div class="member-card"><div>・宮内陽向</div><div>・ごたんだ</div></div>
+                        <div class="member-card"><div>・ヒカル</div><div>・ちさこ</div></div>
+                        <div class="member-card"><div>・もえ</div><div>・ゆうだ</div></div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="team-col team-c">
+                        <div class="team-header">C</div>
+                        <div class="member-card"><div>・ひびき</div></div>
+                        <div class="member-card"><div>・そら</div><div>・たける</div></div>
+                        <div class="member-card"><div>・なまき</div><div>・ひいろ</div></div>
+                        <div class="member-card"><div>・ゆうた</div><div>・宮内陽光</div></div>
+                        <div class="member-card"><div>・しおね</div><div>・あや</div><div>・ももか</div></div>
+                        <div class="member-card"><div>・じんない</div><div>・長崎</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- D, E チームボックス -->
+        <div class="team-box">
+            <div class="grid-2">
+                <div class="col-2">
+                    <div class="team-col team-d">
+                        <div class="team-header">D</div>
+                        <div class="member-card"><div>・はるな</div><div>・さなみ</div></div>
+                        <div class="member-card"><div>・りょう</div><div>・たいが</div></div>
+                        <div class="member-card"><div>・悠お</div><div>・はるか</div></div>
+                        <div class="member-card"><div>・いなむー</div><div>・津田陽向</div></div>
+                        <div class="member-card"><div>・はるな</div><div>・みなみ</div></div>
+                        <div class="member-card"><div>・ゆい</div><div>・ゆうだい</div></div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="team-col team-e">
+                        <div class="team-header">E</div>
+                        <div class="member-card"><div>・かな</div><div>・さやか</div></div>
+                        <div class="member-card"><div>・しゅうた</div></div>
+                        <div class="member-card"><div>・あいり</div><div>・かえで</div></div>
+                        <div class="member-card"><div>・ゆうせい</div></div>
+                        <div class="member-card"><div>・ゆづき</div><div>・みわこ</div></div>
+                        <div class="member-card"><div>・いつき</div><div>・こうせい</div><div>・たまき</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
