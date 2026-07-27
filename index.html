@@ -25,6 +25,15 @@
             font-family: 'Noto Serif JP', serif;
         }
 
+        /* リンクの装飾解除 */
+        .hero-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
         /* 画面全体のコンテナ */
         .hero-container {
             position: relative;
@@ -57,8 +66,6 @@
             text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
             padding: 20px;
             width: 100%;
-            
-            /* 全体を2mmほど（約8px）下げる調整 */
             transform: translateY(-42px);
         }
 
@@ -69,7 +76,6 @@
             animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        /* 下からふわっと浮き上がるアニメーション */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -102,14 +108,12 @@
             margin-top: 5px;
         }
 
-        /* Camp を大きく (5.5rem -> 6.2rem) */
         .sub-title {
             font-size: 6.2rem;
             line-height: 1;
             letter-spacing: 3px;
         }
 
-        /* 2026 を大きく (4rem -> 4.6rem) ＆ 葉っぱの中に納まる配置 */
         .year {
             font-size: 4.6rem;
             margin-left: 20px;
@@ -118,22 +122,19 @@
             display: inline-block;
         }
 
-        /* スマホ対応（iPhoneの画面幅向け） */
+        /* スマホ対応 */
         @media (max-width: 480px) {
             .content-overlay {
-                /* スマホ時も約2mm分下げ */
                 transform: translateY(-47px);
             }
             .main-title {
                 font-size: 4.6rem;
                 letter-spacing: 3px;
             }
-            /* スマホ時の Camp を大きく (4.2rem -> 4.8rem) */
             .sub-title {
                 font-size: 4.8rem;
                 letter-spacing: 2px;
             }
-            /* スマホ時の 2026 を大きく (3rem -> 3.5rem) ＆ 葉っぱの中へ移動 */
             .year {
                 font-size: 3.5rem;
                 margin-left: 18px;
@@ -144,24 +145,22 @@
 </head>
 <body>
 
-    <div class="hero-container">
-        <!-- 画面の背景写真 -->
-        <img src="sc81215.jpg" alt="背景画像" class="bg-image">
+    <!-- タップで menu.html に移動 -->
+    <a href="menu.html" class="hero-link">
+        <div class="hero-container">
+            <img src="sc81215.jpg" alt="背景画像" class="bg-image">
 
-        <!-- 浮き上がる文字エリア -->
-        <div class="content-overlay">
-
-            <!-- Summer Camp 2026 -->
-            <div class="title-area">
-                <h1 class="main-title animated-item" style="animation-delay: 0.3s;">Summer</h1>
-                <div class="sub-title-container animated-item" style="animation-delay: 0.8s;">
-                    <span class="main-title sub-title">Camp</span>
-                    <span class="main-title year">2026</span>
+            <div class="content-overlay">
+                <div class="title-area">
+                    <h1 class="main-title animated-item" style="animation-delay: 0.3s;">Summer</h1>
+                    <div class="sub-title-container animated-item" style="animation-delay: 0.8s;">
+                        <span class="main-title sub-title">Camp</span>
+                        <span class="main-title year">2026</span>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
+    </a>
 
 </body>
 </html>
