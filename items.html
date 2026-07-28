@@ -24,12 +24,63 @@
             background: linear-gradient(135deg, #fffde7 0%, #fff9c4 60%, #e1f5fe 100%);
             min-height: 100vh;
             padding: 20px 12px 40px 12px;
+            animation: fadeIn 0.6s ease-out;
         }
+
+        /* 全体のフェードインアニメーション */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* タブ切り替え時のふわっと表示するアニメーション */
+        @keyframes tabFade {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .container {
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
             position: relative;
+        }
+
+        /* メニューに戻るボタン */
+        .back-menu-wrapper {
+            margin-bottom: 10px;
+        }
+        .back-menu-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f57f17;
+            text-decoration: none;
+            background: #ffffff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 2px dashed #fbc02d;
+            box-shadow: 0 2px 5px rgba(251, 192, 45, 0.1);
+            transition: all 0.2s ease;
+        }
+        .back-menu-btn:hover {
+            background: #fffde7;
+            transform: translateY(-1px);
         }
 
         /* タイトル部分 */
@@ -108,6 +159,7 @@
         }
         .tab-content.active {
             display: block;
+            animation: tabFade 0.4s ease-out;
         }
 
         /* サブタイトル */
@@ -255,6 +307,14 @@
 <body>
     <div class="container">
 
+        <!-- メニューに戻るボタン -->
+        <div class="back-menu-wrapper">
+            <a href="index.html" class="back-menu-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                back to menu
+            </a>
+        </div>
+
         <!-- items ヘッダー -->
         <div class="header-wrapper">
             <svg class="deco-lines" viewBox="0 0 24 20">
@@ -297,8 +357,8 @@
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-12"><span class="custom-check"></span><span class="item-text">ハンガー</span></label></li>
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-13"><span class="custom-check"></span><span class="item-text">洗濯ネット</span></label></li>
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-14"><span class="custom-check"></span><span class="item-text">ビニール袋</span></label></li>
-                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-14"><span class="custom-check"></span><span class="item-text">ヘアアイロン</span></label></li>
-                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-15"><span class="custom-check"></span><span class="item-text">ドライヤー（持ってこれる人）</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-15"><span class="custom-check"></span><span class="item-text">ヘアアイロン</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item1-16"><span class="custom-check"></span><span class="item-text">ドライヤー（持ってこれる人）</span></label></li>
                 </ul>
 
                 <!-- 衣類 -->
@@ -312,17 +372,17 @@
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-6"><span class="custom-check"></span><span class="item-text">バスタオル</span></label></li>
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-7"><span class="custom-check"></span><span class="item-text">着替え</span></label></li>
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-8"><span class="custom-check"></span><span class="item-text">帽子</span></label></li>
-                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-8"><span class="custom-check"></span><span class="item-text">運動靴</span></label></li>
-                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-8"><span class="custom-check"></span><span class="item-text">ラケット</span></label></li>
-                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-9"><span class="custom-check"></span><span class="item-text">サンダル（川遊び用）</span></label></li>
-                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-10"><span class="custom-check"></span><span class="item-text">コートにもっていく小さいバック</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-9"><span class="custom-check"></span><span class="item-text">運動靴</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-10"><span class="custom-check"></span><span class="item-text">ラケット</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-11"><span class="custom-check"></span><span class="item-text">サンダル（川遊び用）</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item2-12"><span class="custom-check"></span><span class="item-text">コートにもっていく小さいバック</span></label></li>
                 </ul>
 
                 <!-- 貴重品 -->
                 <div class="category-title">貴重品</div>
                 <ul class="item-list">
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-1"><span class="custom-check"></span><span class="item-text">財布</span></label></li>
-                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-2"><span class="custom-check"></span><span class="item-text">合宿費　（当日現金回収）</span></label></li>
+                    <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-2"><span class="custom-check"></span><span class="item-text">合宿費 （当日現金回収）</span></label></li>
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-3"><span class="custom-check"></span><span class="item-text">スマホ</span></label></li>
                     <li><label class="item-label"><input type="checkbox" class="item-checkbox" id="item3-4"><span class="custom-check"></span><span class="item-text">充電器</span></label></li>
                 </ul>
