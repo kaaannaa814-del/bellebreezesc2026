@@ -58,31 +58,6 @@
             position: relative;
         }
 
-        /* メニューに戻るボタン */
-        .back-menu-wrapper {
-            margin-bottom: 10px;
-        }
-        .back-menu-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Caveat', cursive;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #f57f17;
-            text-decoration: none;
-            background: #ffffff;
-            padding: 4px 14px;
-            border-radius: 20px;
-            border: 2px dashed #fbc02d;
-            box-shadow: 0 2px 5px rgba(251, 192, 45, 0.1);
-            transition: all 0.2s ease;
-        }
-        .back-menu-btn:hover {
-            background: #fffde7;
-            transform: translateY(-1px);
-        }
-
         /* タイトル部分 */
         .header-wrapper {
             position: relative;
@@ -148,7 +123,7 @@
             background: rgba(255, 255, 255, 0.92);
             border-radius: 28px;
             padding: 24px 20px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 2px solid #fff59d;
             box-shadow: 0 10px 25px rgba(251, 192, 45, 0.15);
         }
@@ -302,18 +277,36 @@
             height: 600px;
             border: none;
         }
+
+        /* メニューに戻るボタン（一番下・中央配置） */
+        .back-menu-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .back-menu-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f57f17;
+            text-decoration: none;
+            background: #ffffff;
+            padding: 6px 20px;
+            border-radius: 25px;
+            border: 2px dashed #fbc02d;
+            box-shadow: 0 3px 8px rgba(251, 192, 45, 0.15);
+            transition: all 0.2s ease;
+        }
+        .back-menu-btn:hover {
+            background: #fffde7;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-
-        <!-- メニューに戻るボタン -->
-        <div class="back-menu-wrapper">
-            <a href="index.html" class="back-menu-btn">
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                back to menu
-            </a>
-        </div>
 
         <!-- items ヘッダー -->
         <div class="header-wrapper">
@@ -414,6 +407,14 @@
                 </ul>
             </div>
 
+        </div>
+
+        <!-- メニューに戻るボタン（一番下） -->
+        <div class="back-menu-wrapper">
+            <a href="index.html" class="back-menu-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                back to menu
+            </a>
         </div>
 
     </div>
