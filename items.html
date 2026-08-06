@@ -400,10 +400,76 @@
             <div id="tab3" class="tab-content">
                 <div class="content-title">買ったもの</div>
                 <div class="content-divider"></div>
+                
+                <div class="category-title">ソフトドリンク</div>
                 <ul class="simple-list">
-                    <li>ーーー</li>
-                    <li>ーーー</li>
-                    <li>ーーー</li>
+                    <li>お茶</li>
+                    <li>レモンティー</li>
+                    <li>ミルクティー</li>
+                    <li>ストレートティー</li>
+                    <li>ぶどう</li>
+                    <li>りんご</li>
+                    <li>オレンジ</li>
+                    <li>コーラ</li>
+                    <li>三ツ矢サイダー</li>
+                    <li>ジンジャーエール</li>
+                    <li>カルピスソーダ</li>
+                    <li>ぐんぐんグルト</li>
+                    <li>炭酸水</li>
+                </ul>
+
+                <div class="category-title">お酒</div>
+                <ul class="simple-list">
+                    <li>ほろよい（104）</li>
+                    <li>レモンサワー（26）</li>
+                    <li>金麦（14）</li>
+                    <li>Welch’sぶどう（6）</li>
+                    <li>トマト（3）</li>
+                    <li>タコハイ（2）</li>
+                    <li>JJ（4）</li>
+                    <li>レモンコーラ（2）</li>
+                    <li>ジンジャーハイ</li>
+                    <li>コークハイ</li>
+                    <li>ブラックニッカ</li>
+                    <li>梅酒</li>
+                    <li>焼酎</li>
+                    <li>レモンサワーの素</li>
+                    <li>ほろ酔いの素（2）</li>
+                    <li>カシオレの素</li>
+                </ul>
+
+                <div class="category-title">お菓子</div>
+                <ul class="simple-list">
+                    <li>韓国のり</li>
+                    <li>茎わかめ</li>
+                    <li>堅あげポテト</li>
+                    <li>ポテチ</li>
+                    <li>瀬戸塩せんべい</li>
+                    <li>歌舞伎揚</li>
+                    <li>かっぱえびせん</li>
+                    <li>ばかうけ</li>
+                    <li>ハッピーターン</li>
+                    <li>ポップコーン</li>
+                    <li>ブラックサンダー</li>
+                    <li>キットカット</li>
+                    <li>パイの実</li>
+                    <li>ホームパイ</li>
+                    <li>カントリーマアム</li>
+                    <li>アルフォート</li>
+                    <li>きのこたけのこ</li>
+                    <li>ルマンド</li>
+                    <li>ラングレイス</li>
+                    <li>ビスコ</li>
+                    <li>たべっこ水族館</li>
+                    <li>ソルティバター</li>
+                    <li>ルーベラ</li>
+                    <li>バームロール</li>
+                    <li>ドライマンゴー</li>
+                    <li>サツマイモチップス</li>
+                    <li>つまみの種</li>
+                    <li>かるぱす</li>
+                    <li>さきいか</li>
+                    <li>チーズアーモンド</li>
                 </ul>
             </div>
 
@@ -445,7 +511,7 @@
 
             checkboxes.forEach(function(checkbox) {
                 var savedState = localStorage.getItem('camp_check_' + checkbox.id);
-                if (savedState === 'true') {
+                > if (savedState === 'true') {
                     checkbox.checked = true;
                 }
 
