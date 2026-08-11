@@ -128,18 +128,22 @@
           display: block;
       }
      
-      /* チームヘッダー */
+      /* チームヘッダー（文字あふれ対策） */
       .team-header {
           text-align: center;
           font-family: 'M PLUS Rounded 1c', sans-serif;
-          font-size: 1.05rem;
+          font-size: 0.95rem;
           font-weight: 700;
-          padding: 6px 4px;
+          line-height: 1.25;
+          padding: 6px 3px;
           border-radius: 12px 12px 4px 4px;
           margin-bottom: 8px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          white-space: normal;
+          word-break: break-word;
+          min-height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
       }
 
       /* 🏆 スコアエリアのデザイン */
@@ -287,6 +291,17 @@
           transform: scale(0.96);
           background: #b388ff;
           color: #ffffff;
+      }
+
+      /* スマホ向け文字サイズ調整 */
+      @media screen and (max-width: 600px) {
+          .team-header {
+              font-size: 0.8rem;
+              padding: 4px 2px;
+          }
+          .grid-2 {
+              width: 100%;
+          }
       }
    </style>
 </head>
